@@ -48,24 +48,34 @@
 
 - (id)init
 {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 	}
 	return self;
 }
 
 - (id)initWithContentsOfURL:(NSURL *)url
 {
-	if (self = [self initWithData:[NSData dataWithContentsOfURL:url]]) {
+	if ((self = [self initWithData:[NSData dataWithContentsOfURL:url]])) {
 	}
 	return self;
 }
 
 - (id)initWithData:(NSData *)data
 {
-	if (self = [self init]) {
+	if ((self = [self init])) {
 		[self setXmlData:data];
 	}
 	return self;
+}
+
+-(void)dealloc
+{
+	[super dealloc];
+	
+    self.parserError = nil;
+    self.xmlData = nil;
+    self.domDictionary = nil;
+    self.parserStack = nil;
 }
 
 #pragma mark -
